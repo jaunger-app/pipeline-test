@@ -34,7 +34,7 @@ jobs:
 #        run: echo "Bash script failed"
       
   arch-test:
-    runs-on: arch-latest
+    runs-on: base/arch
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -50,7 +50,7 @@ jobs:
         run: echo "Bash script failed"
 
   fedora-test:
-    runs-on: fedora-latest
+    runs-on: fedora:rawhide
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
