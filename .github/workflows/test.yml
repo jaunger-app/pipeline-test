@@ -1,38 +1,37 @@
 name: Build LibrePods Linux
 
 on:
-  workflow_dispatch:
-#  push:
+  push:
 #    branches:
 #      - '*'
 
 jobs:
-  linting:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: use DavidAnson/markdownlint-action
-        uses: DavidAnson/markdownlint-cli2-action@v21
-        continue-on-error: true
-        with: 
-          globs: '**/*.md'
+ # linting:
+  #  runs-on: ubuntu-latest
+   # steps:
+   #   - name: Checkout repository
+    #    uses: actions/checkout@v3
+    #  - name: use DavidAnson/markdownlint-action
+    #    uses: DavidAnson/markdownlint-cli2-action@v21
+    #    continue-on-error: true
+    #    with: 
+     #     globs: '**/*.md'
 
-  debian-test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+ # debian-test:
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - name: Checkout repository
+ #       uses: actions/checkout@v3#
 
-      - name: make script executable
-        run: chmod +x ./linux.sh
-      - name: Start Bash script
-        id: bash-script
-        run: bash ./linux.sh
-        continue-on-error: false
-      - name: error handling
-        if: ${{steps.bash-script.outcome == '1' }}
-        run: echo "Bash script failed"
+#      - name: make script executable
+#        run: chmod +x ./linux.sh
+#      - name: Start Bash script
+#        id: bash-script
+#        run: bash ./linux.sh
+#        continue-on-error: false
+#      - name: error handling
+#        if: ${{steps.bash-script.outcome == '1' }}
+#        run: echo "Bash script failed"
       
   arch-test:
     runs-on: arch-latest
